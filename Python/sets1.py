@@ -8,5 +8,6 @@ s.add(3)
 s.add(4)
 s.add(3) 
 
+# Remove element from sets with remove() function.
 s.remove(2)
 print(s)
