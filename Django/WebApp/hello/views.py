@@ -8,5 +8,5 @@ def index(request):
 def ithri(request):
     return HttpResponse("Hello, Ithri!")
 
-def med(request):
-    return HttpResponse("Hello, Med!")
+def ojnna(request):
+    return HttpResponse("Hello, Ojnna!")
