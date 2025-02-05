@@ -4,24 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('form').onsubmit = () => {
-                const task = document.querySelector('#task').value;
-
-                const li = document.createElement('li');
-                li.innerHTML = task;
-
-                document.querySelector('#tasks').append(li);
-
-                document.querySelector('#task').value = '';
-
-                // Stop form from submittion
-                 return false;
-            }
-
-        });
-    </script>
+    <script src="tasks.js"></script>
 </head>
 <body>
     <h1>Tasks</h1>
