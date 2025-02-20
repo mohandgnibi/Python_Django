@@ -8,6 +8,25 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <!-- Include Babel to use JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        #app {
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        #problem {
+            font-size: 72px;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #winner {
+            font-size: 72px;
+            color: green;
+        }
+    </style>
     <title>Addition</title>
 </head>
 <body>
@@ -20,7 +39,8 @@
                 num1: 2,
                 num2: 4,
                 response: "",
-                score: 0
+                score: 0,
+                incorrect: false
             });
 
             function inputKeyPress(event) {
@@ -33,14 +53,16 @@
                             num1: Math.ceil(Math.random() * 10),
                             num2: Math.ceil(Math.random() * 10),
                             score: state.score + 1,
-                            response: ""
+                            response: "",
+                            incorrect: false
                         })
                     } else {
                         // User got question wrong
                         setState({
                             ...state,
                             score: state.score - 1,
-                            response: ""
+                            response: "",
+                            incorrect: true
                         })
                     }
                 }
@@ -53,9 +75,17 @@
                 });
             }
 
+            if (state.score === 10) {
+                return (
+                    <div id="winner">
+                        You Won!
+                    </div>
+                )
+            }
+
             return (
                 <div>
-                    <div>{state.num1} + {state.num2}</div>
+                    <div className={state.incorrect ? "incorrect": ""} id="problem">{state.num1} + {state.num2}</div>
                     <input autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
                     <div>Score: {state.score}</div>
                 </div>
